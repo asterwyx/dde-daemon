@@ -603,6 +603,7 @@ func (a *Audio) refershSinkInputs() {
 }
 
 func (a *Audio) shouldAutoPause() bool {
+	logger.Info("pause player", a.PausePlayer)
 	if !a.PausePlayer {
 		return false
 	}
@@ -644,8 +645,11 @@ func (a *Audio) shouldAutoPause() bool {
 
 func (a *Audio) autoPause() {
 	if !a.shouldAutoPause() {
+		logger.Info("should not auto pause")
 		return
 	}
+
+	logger.Info("wangyixue: auto pause!")
 
 	var port pulse.CardPortInfo
 	card, err := a.ctx.GetCard(a.defaultSink.Card)

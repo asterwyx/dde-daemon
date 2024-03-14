@@ -79,7 +79,7 @@ func pauseAllPlayers() {
 		return
 	}
 
-	logger.Debug("pause all players")
+	logger.Info("pause all players")
 	for _, playerName := range playerNames {
 		player := mpris2.NewMediaPlayer(sessionConn, playerName)
 		err := player.Player().Pause(0)
