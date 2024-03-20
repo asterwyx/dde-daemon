@@ -51,13 +51,13 @@ func newAdapter(systemSigLoop *dbusutil.SignalLoop, objPath dbus.ObjectPath) (a 
 	// a.waitDiscovery = true
 	// 用于定时停止扫描
 	a.discoveringTimer = time.AfterFunc(defaultDiscoveringTimeout, func() {
-		logger.Debug("discovery time out, stop discovering")
-		// NOTE: 扫描结束后不用备份设备，因为处理设备添加时就会同时备份设备。
-		//Scan timeout
-		a.discoveringFinished = true
-		if err := a.core.Adapter().StopDiscovery(0); err != nil {
-			logger.Warningf("stop discovery failed, err:%v", err)
-		}
+		// logger.Debug("discovery time out, stop discovering")
+		// // NOTE: 扫描结束后不用备份设备，因为处理设备添加时就会同时备份设备。
+		// //Scan timeout
+		// a.discoveringFinished = true
+		// if err := a.core.Adapter().StopDiscovery(0); err != nil {
+		// 	logger.Warningf("stop discovery failed, err:%v", err)
+		// }
 		_bt.prepareToConnectedDevice = ""
 	})
 	// stop timer at first
